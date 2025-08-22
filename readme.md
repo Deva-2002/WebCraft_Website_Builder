@@ -3,6 +3,11 @@
 **Webcraft** is an AI-powered website builder that lets you describe your dream website in plain English and generates a guided website plan for you.  
 It is built using **WebContainers** (similar architecture used by Claude), with a **React frontend** and **Node.js backend**.
 
+## 🖼️ Demo
+
+🎥 Check out the demo video here: [View Demo](demo_webcraft.mp4)
+
+
 ---
 
 ## ✨ Features
