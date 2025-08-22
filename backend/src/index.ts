@@ -66,15 +66,17 @@ app.post("/template", async (req, res) => {
 });
 
 
-app.post('/chat',async(req,res)=>{
-    const message=req.body.message;
+app.post('/chat', async (req, res) => {
+    const message = req.body.message;
 
-     const response = await anthropic.messages.create({
-            messages: message,
-            model: "claude-opus-4-1-20250805",
-            max_tokens: 200,
-            system: getSystemPrompt()
-        });
+    const response = await anthropic.messages.create({
+        messages: message,
+        model: "claude-opus-4-1-20250805",
+        max_tokens: 200,
+        system: getSystemPrompt()
+    });
+
+    // console.log(response);
 
     res.json({
 

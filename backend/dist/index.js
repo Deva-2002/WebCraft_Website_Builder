@@ -61,6 +61,7 @@ app.post('/chat', async (req, res) => {
         max_tokens: 200,
         system: getSystemPrompt()
     });
+    // console.log(response);
     res.json({});
 });
 app.listen(3000, () => {
