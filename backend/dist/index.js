@@ -53,16 +53,20 @@ app.post("/template", async (req, res) => {
         res.status(500).json({ message: "Internal server error", err });
     }
 });
-app.post('/chat', async (req, res) => {
-    const message = req.body.message;
+app.post("/chat", async (req, res) => {
+    const messages = req.body.messages;
     const response = await anthropic.messages.create({
-        messages: message,
-        model: "claude-opus-4-1-20250805",
-        max_tokens: 200,
+        messages: messages,
+        model: 'claude-3-5-sonnet-20241022',
+        max_tokens: 8000,
         system: getSystemPrompt()
     });
-    // console.log(response);
-    res.json({});
+    console.log(response);
+    const firstBlock = response.content[0];
+    const text = firstBlock && firstBlock.type === "text" ? firstBlock.text : "";
+    res.json({
+        response: text
+    });
 });
 app.listen(3000, () => {
     console.log('listening to port 3000');

@@ -1,10 +1,12 @@
 import dotenv from "dotenv";
 dotenv.config();
+import cors from "cors";
 import express from "express";
+const app=express();
+app.use(express.json());
+app.use(cors());
 import { BASE_PROMPT, getSystemPrompt } from "./prompt.js";
 
-const app = express();
-app.use(express.json());
 import { basePrompt as nodeBasePrompt } from "./default/node.js";
 import { basePrompt as reactBasePrompt } from "./default/react.js";
 
@@ -66,23 +68,25 @@ app.post("/template", async (req, res) => {
 });
 
 
-app.post('/chat', async (req, res) => {
-    const message = req.body.message;
-
+app.post("/chat", async (req, res) => {
+    const messages = req.body.messages;
     const response = await anthropic.messages.create({
-        messages: message,
-        model: "claude-opus-4-1-20250805",
-        max_tokens: 200,
+        messages: messages,
+        model: 'claude-3-5-sonnet-20241022',
+        max_tokens: 8000,
         system: getSystemPrompt()
-    });
-
-    // console.log(response);
-
-    res.json({
-
     })
 
+    console.log(response);
+    const firstBlock = response.content[0];
+    const text = firstBlock && firstBlock.type === "text" ? firstBlock.text : "";
+
+
+    res.json({
+        response: text
+    });
 })
+
 
 
 
