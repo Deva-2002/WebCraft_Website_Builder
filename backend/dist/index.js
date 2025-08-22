@@ -9,7 +9,7 @@ const client = new Anthropic({
 //till part 3 done
 async function main() {
     await client.messages.stream({
-        messages: [{ role: 'user', content: "Hello" }],
+        messages: [{ role: 'user', content: "create a basic html page of 15 lines" }],
         model: 'claude-opus-4-1-20250805',
         max_tokens: 1024,
     }).on('text', (text) => {
