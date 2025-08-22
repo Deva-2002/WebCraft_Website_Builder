@@ -29,7 +29,7 @@ It is built using **WebContainers** (similar architecture used by Claude), with 
 
 ```bash
 git clone https://github.com/Deva-2002/WebCraft_Website_Builder
-cd webcraft
+cd WebCraft_Website_Builder
 cd backend
 npm install
 tsc -b
