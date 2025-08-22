@@ -1,9 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
+import cors from "cors";
 import express from "express";
-import { BASE_PROMPT, getSystemPrompt } from "./prompt.js";
 const app = express();
 app.use(express.json());
+app.use(cors());
+import { BASE_PROMPT, getSystemPrompt } from "./prompt.js";
 import { basePrompt as nodeBasePrompt } from "./default/node.js";
 import { basePrompt as reactBasePrompt } from "./default/react.js";
 const CLAUDE_API_KEY = process.env.CLAUDE_API_KEY;
@@ -57,7 +59,7 @@ app.post("/chat", async (req, res) => {
     const messages = req.body.messages;
     const response = await anthropic.messages.create({
         messages: messages,
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'claude-opus-4-1-20250805',
         max_tokens: 8000,
         system: getSystemPrompt()
     });

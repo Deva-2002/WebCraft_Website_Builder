@@ -16,37 +16,49 @@ export function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center p-4">
-      <div className="max-w-2xl w-full">
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <Wand2 className="w-12 h-12 text-blue-400" />
-          </div>
-          <h1 className="text-4xl font-bold text-gray-100 mb-4">
-            Website Builder AI
-          </h1>
-          <p className="text-lg text-gray-300">
-            Describe your dream website, and we'll help you build it step by step
-          </p>
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center p-6">
+  <div className="max-w-2xl w-full space-y-8">
+    
+    {/* Header */}
+    <div className="text-center space-y-3">
+      <div className="flex justify-center">
+        <div className="p-3 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-400/10">
+          <Wand2 className="w-12 h-12 text-emerald-400" />
         </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="bg-gray-800 rounded-lg shadow-lg p-6">
-            <textarea
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Describe the website you want to build..."
-              className="w-full h-32 p-4 bg-gray-900 text-gray-100 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none placeholder-gray-500"
-            />
-            <button
-              type="submit"
-              className="w-full mt-4 bg-blue-600 text-gray-100 py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              Generate Website Plan
-            </button>
-          </div>
-        </form>
       </div>
+      <h1 className="text-5xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+        WebCraft
+      </h1>
+      <p className="text-lg text-gray-400 max-w-md mx-auto">
+        Your AI companion to craft websites — describe your idea, and we’ll build the plan step by step.
+      </p>
     </div>
+
+    {/* Input Section */}
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="bg-gray-900/80 border border-gray-800 rounded-2xl p-6 shadow-lg backdrop-blur-sm">
+        <textarea
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          placeholder="✨ Describe the website you want to build..."
+          className="w-full h-36 p-4 bg-gray-950/80 text-gray-100 border border-gray-800 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 resize-none placeholder-gray-500 text-base leading-relaxed"
+        />
+        <button
+          type="submit"
+          className="w-full mt-4 bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-3 px-6 rounded-xl font-semibold hover:from-emerald-500 hover:to-teal-400 transition-all shadow-md hover:shadow-lg"
+        >
+          🚀 Generate Website 
+        </button>
+      </div>
+    </form>
+
+    {/* Footer */}
+    <p className="text-xs text-gray-600 text-center">
+      Powered by AI • Designed for creators
+    </p>
+  </div>
+</div>
+
+
   );
 }
